@@ -5,17 +5,14 @@ import { makeStyles } from "@material-ui/core/styles";
 const Header = () => {
     const styles = makeStyles(theme => ({
         header: {
-            marginBottom: "50px"
+            height: "280px",
+            zIndex: "-1",
         }
     }))();
 
     return (
-        <AppBar position="static" className={styles.header}>
-            <Container>
-                <Toolbar>
-                    <Typography variant="h6">IMDB Film Data</Typography>
-                </Toolbar>
-            </Container>
+        <AppBar position="fixed" className={styles.header}>
+            <Toolbar></Toolbar>
         </AppBar>
     );
 };

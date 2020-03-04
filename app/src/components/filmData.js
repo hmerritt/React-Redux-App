@@ -33,7 +33,8 @@ const FilmData = props => {
     const styles = makeStyles(theme => ({
         paper: {
             display: "block",
-            padding: "40px"
+            padding: "40px",
+            marginTop: "100px"
         },
         ratingStars: {
             verticalAlign: "bottom",
