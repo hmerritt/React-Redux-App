@@ -9,7 +9,15 @@ export const initialState = {
     film: {
         error: "",
         isFetching: false,
-        data: {}
+        data: {
+            id: "",
+            title: "",
+            year: "",
+            rating: "",
+            poster: "",
+            cast: [],
+            technical_specs: []
+        }
     }
 };
 
@@ -30,9 +38,7 @@ export const reducer = (state = initialState, action) => {
                 film: {
                     ...state.film,
                     isFetching: false,
-                    data: {
-                        ...action.payload
-                    }
+                    data: action.payload
                 }
             }
 
