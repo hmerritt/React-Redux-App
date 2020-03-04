@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import {
     Container,
@@ -8,12 +8,16 @@ import {
     ListItem,
     ListItemAvatar,
     ListItemText,
-    Avatar
+    Avatar,
+    ExpansionPanel,
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
 } from "@material-ui/core";
-import { Person } from "@material-ui/icons";
+import { Person, ExpandMore } from "@material-ui/icons";
 import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import { getFilm } from "../actions";
+import Parser from 'html-react-parser';
 
 const FilmData = props => {
 
@@ -36,8 +40,14 @@ const FilmData = props => {
             marginRight: "10px"
         },
         cast: {
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             margin: "20px 0"
-        }
+        },
+        castItem: {
+            width: "290px"
+        },
     }))();
 
     return (
@@ -67,7 +77,7 @@ const FilmData = props => {
                     <List className={styles.cast} dense>
                         {film.cast.map((person, key) => {
                             return (
-                                <ListItem>
+                                <ListItem className={styles.castItem}>
                                     <ListItemAvatar>
                                         <Avatar>
                                             <Person />
@@ -81,6 +91,34 @@ const FilmData = props => {
                             );
                         })}
                     </List>
+
+                    {/* Technical Specs */}
+                    <div className="technical_specs">
+                        {
+                            film.technical_specs.map((item, key) => {
+                                return (
+                                    <ExpansionPanel key={key}>
+                                        <ExpansionPanelSummary
+                                            expandIcon={<ExpandMore />}
+                                        >
+                                            <Typography>
+                                                {
+                                                    item[0]
+                                                }
+                                            </Typography>
+                                        </ExpansionPanelSummary>
+                                        <ExpansionPanelDetails>
+                                            <Typography>
+                                                {
+                                                    Parser(item[1])
+                                                }
+                                            </Typography>
+                                        </ExpansionPanelDetails>
+                                    </ExpansionPanel>
+                                )
+                            })
+                        }
+                    </div>
 
                 </Paper>
             </Container>
