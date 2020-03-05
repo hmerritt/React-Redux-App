@@ -8,10 +8,19 @@ const Search = props => {
 
     //  Input state
     const [search, setSearch] = useState("Interstellar");
+    const [timer, setTimer]   = useState(null);
 
     //  Fetch film data
     useEffect(() => {
-        props.getFilm(search);
+        //  Do not search if user is still typing
+        clearTimeout(timer);
+
+        //  Wait 500ms after user has typed
+        setTimer(
+            setTimeout(function () {
+                props.getFilm(search);
+            }, 600)
+        );
     }, [search]);
 
     //  Handle search input
