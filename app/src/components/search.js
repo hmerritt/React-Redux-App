@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const Search = props => {
 
     //  Input state
-    const [search, setSearch] = useState("The Shawshank");
+    const [search, setSearch] = useState("Interstellar");
 
     //  Fetch film data
     useEffect(() => {
@@ -27,7 +27,10 @@ const Search = props => {
             height: "80px",
             width: "500px",
             margin: "0 auto",
-            color: "white"
+            "& label" : { color: "#ccc" },
+            "& label.Mui-focused": { color: "#ccc" },
+            "& .MuiInputBase-input": { color: "#fff" },
+            "& .MuiFilledInput-underline:before": { borderBottom: "1px solid rgba(255, 255, 255, 0.5)" }
         },
     }))();
 

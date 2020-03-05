@@ -17,7 +17,6 @@ import {
 import { Person, ExpandMore } from "@material-ui/icons";
 import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
-import { getFilm } from "../actions";
 import Parser from "html-react-parser";
 
 const FilmData = props => {
@@ -53,15 +52,19 @@ const FilmData = props => {
                     {/* Title (year) */}
                     <Typography variant="h2">
                         {(() => {
-                            if (film.title.length > 0) {
+                            if (props.isFetching) {
+                                return "Loading film...";
+                            }
+                            else if (film.title.length > 0) {
                                 return (
                                     <>
                                         {film.title}{" "}
                                         <small>({film.year})</small>
                                     </>
                                 );
+                            } else {
+                                return "No Film Found";
                             }
-                            return "No Film Found";
                         })()}
                     </Typography>
 
@@ -70,7 +73,7 @@ const FilmData = props => {
                         <Rating
                             className={styles.ratingStars}
                             name="rating"
-                            value={film.rating}
+                            value={Number(film.rating)}
                             precision={0.5}
                             max={10}
                             readOnly
@@ -126,6 +129,5 @@ export default connect(
     state => ({
         film: state.film.data,
         isFetching: state.film.isFetching
-    }),
-    { getFilm }
+    })
 )(FilmData);
