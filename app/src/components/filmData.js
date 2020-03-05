@@ -68,6 +68,11 @@ const FilmData = props => {
                         })()}
                     </Typography>
 
+                    {/* Plot */}
+                    <Typography className="plot" variant="body1">
+                        {film.plot}
+                    </Typography>
+
                     {/* Rating */}
                     <Typography variant="caption">
                         <Rating
@@ -118,6 +123,11 @@ const FilmData = props => {
                                 </ExpansionPanel>
                             );
                         })}
+                    </div>
+
+                    {/* Poster */}
+                    <div className="poster">
+                        <img src={film.poster} width="100%" />
                     </div>
                 </Paper>
             </Container>

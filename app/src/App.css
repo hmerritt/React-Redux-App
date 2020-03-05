@@ -46,3 +46,11 @@
     max-width: 1000px;
     margin: 0 auto;
 }
+
+.film-card .plot {
+    margin-bottom: 10px;
+}
+
+.film-card .poster {
+    margin-top: 20px;
+}
