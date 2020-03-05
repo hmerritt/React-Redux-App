@@ -25,10 +25,10 @@ export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_FILM_START:
             return {
-                ...state,
+                ...initialState,
                 search: action.payload,
                 film: {
-                    ...state.film,
+                    ...initialState.film,
                     isFetching: true
                 }
             }

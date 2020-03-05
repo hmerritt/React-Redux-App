@@ -12,15 +12,18 @@ const Search = props => {
 
     //  Fetch film data
     useEffect(() => {
-        //  Do not search if user is still typing
-        clearTimeout(timer);
+        //  Do not search if input is empty
+        if (search.length > 0) {
+            //  Do not search if user is still typing
+            clearTimeout(timer);
 
-        //  Wait 500ms after user has typed
-        setTimer(
-            setTimeout(function () {
-                props.getFilm(search);
-            }, 600)
-        );
+            //  Wait 500ms after user has typed
+            setTimer(
+                setTimeout(function () {
+                    props.getFilm(search);
+                }, 600)
+            );
+        }
     }, [search]);
 
     //  Handle search input
