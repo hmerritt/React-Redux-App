@@ -26,6 +26,7 @@ export const reducer = (state = initialState, action) => {
         case FETCH_FILM_START:
             return {
                 ...state,
+                search: action.payload,
                 film: {
                     ...state.film,
                     isFetching: true

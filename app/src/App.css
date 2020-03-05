@@ -35,6 +35,13 @@
 }
 
 
+.search-container {
+    position: relative;
+    padding-top: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .film-card {
     max-width: 1000px;
     margin: 0 auto;
